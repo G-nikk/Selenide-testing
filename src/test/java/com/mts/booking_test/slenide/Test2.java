@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.text.html.parser.Element;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class Test2 {
@@ -36,8 +34,7 @@ public class Test2 {
         sleep(5000);
 
         String name = Selenide.$("#b2searchresultsPage > div.map_full_overlay__wrapper.map-modal-full > div.map-modal-content > div > div.map_left_cards.map_left_cards--v2 > div > div > ul > li:nth-child(1) > a > div.dccc7e1586 > div.c624d7469d.f034cf5568.a937b09340.a3214e5942 > div.dc5041d860.c72df67c95 > div > h2").getText();
-        String fullStars = Selenide.$("#b2searchresultsPage > div.map_full_overlay__wrapper.map-modal-full > div.map-modal-content > div > div.map_left_cards.map_left_cards--v2 > div > div > ul > li:nth-child(1) > a > div.dccc7e1586 > div.c624d7469d.f034cf5568.a937b09340.a3214e5942 > div.dc5041d860.c72df67c95 > div > span.a455730030.a30b0745db").getAttribute("aria-label");
-        String stars = (fullStars.contains("1")) ? "1" : (fullStars.contains("2")) ? "2" : (fullStars.contains("3")) ? "3" : (fullStars.contains("4")) ? "4" : fullStars.contains("5") ? "5" : "0";
+        String stars = Selenide.$("#b2searchresultsPage > div.map_full_overlay__wrapper.map-modal-full > div.map-modal-content > div > div.map_left_cards.map_left_cards--v2 > div > div > ul > li:nth-child(1) > a > div.dccc7e1586 > div.c624d7469d.f034cf5568.a937b09340.a3214e5942 > div.dc5041d860.c72df67c95 > div > span.a455730030.a30b0745db").getAttribute("aria-label");
         String rating = Selenide.$("#b2searchresultsPage > div.map_full_overlay__wrapper.map-modal-full > div.map-modal-content > div > div.map_left_cards.map_left_cards--v2 > div > div > ul > li:nth-child(1) > a > div.dccc7e1586 > div.c3deae0c07.afeaa8180f > div > div.a3b8729ab1.d86cee9b25").getText();
         String reviews = Selenide.$("#b2searchresultsPage > div.map_full_overlay__wrapper.map-modal-full > div.map-modal-content > div > div.map_left_cards.map_left_cards--v2 > div > div > ul > li:nth-child(1) > a > div.dccc7e1586 > div.c3deae0c07.afeaa8180f > div > div.dc5041d860.c72df67c95.a29749fd9f > div.abf093bdfe.f45d8e4c32.d935416c47").getText();
         String price = Selenide.$("#b2searchresultsPage > div.map_full_overlay__wrapper.map-modal-full > div.map-modal-content > div > div.map_left_cards.map_left_cards--v2 > div > div > ul > li:nth-child(1) > a > div.dccc7e1586 > div.b05883eda7 > div.c5ca594cb1.f19ed67e4b > span.f6431b446c.fbfd7c1165.e84eb96b1f").getText();
