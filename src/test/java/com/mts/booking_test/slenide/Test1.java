@@ -3,17 +3,13 @@ package com.mts.booking_test.slenide;
 
 import com.codeborne.selenide.Selenide;
 import com.mts.booking_test.pages.MainPageSelenide;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.test.context.event.annotation.BeforeTestMethod;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class Test1 {
-    private MainPageSelenide mainPageSelenide;
+    public MainPageSelenide mainPageSelenide;
 
     @BeforeEach
     public void setUp() {
@@ -22,12 +18,18 @@ public class Test1 {
 
     @Test
     public void test1() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver131.exe");
-        open("https://www.booking.com/searchresults.ru.html?ss=Анталья&ssne=Анталья&ssne_untouched=Анталья&efdco=1&label=gen173nr-1BCAEoggI46AdIM1gEaMIBiAEBmAEhuAEXyAEV2AEB6AEBiAIBqAIDuAK42uu6BsACAdICJGVkYmUyNjJhLTA2MjUtNGYyMi04NjU5LWY4OTg5OGQ5NTIwZdgCBeACAQ&sid=2c43ea7c87750b4fe6a929eb2e151c44&aid=304142&lang=ru&sb=1&src_elem=sb&src=searchresults&dest_id=-735347&dest_type=city&group_adults=2&no_rooms=1&group_children=0");
-        sleep(10000);
+        System.setProperty("webdriver.chrome.driver", "chromedriver131.exe"); //Chrome driver version 131
+        open("https://www.booking.com/searchresults.ru.html?ss=%D0%90%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D1%8F&label=gog235jc-1DCAEoggI46AdIIVgDaMIBiAEBmAEhuAEXyAEM2AED6AEB-AECiAIBqAIDuALTzvq6BsACAdICJGUyZjU4NjFkLTVjNjYtNDI4Yy05YWI2LWIzNTgyOWJlNWEzOdgCBOACAQ&aid=397594&lang=ru&sb=1&src_elem=sb&src=index&dest_id=-735347&dest_type=city&place_id=city%2F-735347&ac_position=0&ac_click_type=b&ac_langcode=ru&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=3e4645a98a9f059d&ac_meta=GhBhOTllNDVhYzdlZWYwMmViIAAoATICcnU6DNCQ0L3RgtCw0LvRjEAASgBQAA%3D%3D&group_adults=2&no_rooms=1&group_children=0");
+        sleep(5000);
+        Selenide.$("#\\:rh\\:").val("Анталья").pressEnter();
+        sleep(5000);
         Selenide.$("#\\:r29\\:").click();
-        //Selenide.$("#ss").val("Анталья").pressEnter();
         boolean result = mainPageSelenide.searchForStars();
         Assertions.assertEquals(true, result, "Тест не пройден!");
+    }
+
+    @AfterEach
+    public void tearDown() {
+        Selenide.closeWebDriver();
     }
 }
