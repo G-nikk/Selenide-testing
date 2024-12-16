@@ -2,12 +2,15 @@ package com.mts.booking_test.slenide;
 
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.junit5.TextReportExtension;
 import com.mts.booking_test.pages.MainPageSelenide;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
 
+@ExtendWith({TextReportExtension.class})
 public class Test1 {
     public MainPageSelenide mainPageSelenide;
 
